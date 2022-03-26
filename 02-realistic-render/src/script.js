@@ -42,9 +42,10 @@ const environmentMap = cubeTextureLoader.load([
     '/textures/environmentMaps/1/pz.jpg',
     '/textures/environmentMaps/1/nz.jpg'
 ]);
+environmentMap.encoding = THREE.sRGBEncoding
 
 scene.background = environmentMap
-debugObject.envMapIntensity = 3
+debugObject.envMapIntensity = 0.5
 gui.add(debugObject, 'envMapIntensity').min(0).max(10).step(0.001).onFinishChange(() => {
     updateAllMaterials()
 })
