@@ -7,7 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 //Loaders
 const gltfLoader = new GLTFLoader()
-
+const cubeTextureLoader = new THREE.CubeTextureLoader()
 /**
  * Base
  */
@@ -19,6 +19,18 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+//Environment map
+const environmentMap = cubeTextureLoader.load([
+    '/textures/environmentMaps/3/px.jpg',
+    '/textures/environmentMaps/3/nx.jpg',
+    '/textures/environmentMaps/3/py.jpg',
+    '/textures/environmentMaps/3/ny.jpg',
+    '/textures/environmentMaps/3/pz.jpg',
+    '/textures/environmentMaps/3/nz.jpg'
+]);
+
+scene.background = environmentMap
 
 // Models
 gltfLoader.load(
@@ -42,15 +54,6 @@ gui.add(directionalLight, 'intensity').min(0).max(10).step(0.001).name('lightInt
 gui.add(directionalLight.position, 'x').min(-5).max(5).step(0.001).name('lightX')
 gui.add(directionalLight.position, 'y').min(-5).max(5).step(0.001).name('lightY')
 gui.add(directionalLight.position, 'z').min(-5).max(5).step(0.001).name('lightZ')
-
-/**
- * Test sphere
- */
-const testSphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 32, 32),
-    new THREE.MeshStandardMaterial()
-)
-scene.add(testSphere)
 
 /**
  * Sizes
