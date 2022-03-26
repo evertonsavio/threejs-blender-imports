@@ -35,12 +35,12 @@ const updateAllMaterials = () => {
 
 //Environment map
 const environmentMap = cubeTextureLoader.load([
-    '/textures/environmentMaps/3/px.jpg',
-    '/textures/environmentMaps/3/nx.jpg',
-    '/textures/environmentMaps/3/py.jpg',
-    '/textures/environmentMaps/3/ny.jpg',
-    '/textures/environmentMaps/3/pz.jpg',
-    '/textures/environmentMaps/3/nz.jpg'
+    '/textures/environmentMaps/1/px.jpg',
+    '/textures/environmentMaps/1/nx.jpg',
+    '/textures/environmentMaps/1/py.jpg',
+    '/textures/environmentMaps/1/ny.jpg',
+    '/textures/environmentMaps/1/pz.jpg',
+    '/textures/environmentMaps/1/nz.jpg'
 ]);
 
 scene.background = environmentMap
@@ -116,6 +116,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.physicallyCorrectLights = true
+renderer.outputEncoding = THREE.sRGBEncoding
 
 /**
  * Animate
